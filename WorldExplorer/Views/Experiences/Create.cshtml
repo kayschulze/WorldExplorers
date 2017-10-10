@@ -1,0 +1,22 @@
+﻿@model WorldExplorer.Models.Experience
+
+@{
+    ViewData["Title"] = "Experience - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create a New Experience</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Subject)
+    @Html.EditorFor(model => model.Subject)
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    <input type="submit" value="Create" class="btn btn-success" />
+}
+
+@Html.ActionLink("Back to Experiences List", "Index")

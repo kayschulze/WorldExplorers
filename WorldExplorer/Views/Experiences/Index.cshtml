@@ -1,0 +1,20 @@
+﻿@model IEnumerable<WorldExplorer.Models.Experience>
+
+<html>
+<head>
+    <title>World Experiences</title>
+</head>
+
+<body>
+    <h2>Experiences</h2>
+	<h4>@Html.DisplayNameFor(model =>model.Subject)</h4>
+    <ul>
+        @foreach(var listExperience in Model)
+		{
+            <li>@Html.DisplayFor(modelItem => listExperience.Subject)</li>
+			<li>@Html.DisplayFor(modelItem => listExperience.Description)</li>
+		}
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model WorldExplor.Models.Experience
+
+@{
+    ViewData["Title"] = "Experience - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<hr />
+
+<h4>Edit this Experience: @Html.DisplayFor(model => model.Subject)</h4>>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ExperienceId)
+
+    @Html.LabelFor(model => model.Subject)
+    @Html.EditorFor(model => model.Subject)
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    @Html.LabelFor(model => model.LocationId)
+    @Html.DropDownList("LocationId")
+
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+
+@Html.AcitonLink("Back to Experiences List", "Index")

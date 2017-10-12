@@ -11,6 +11,7 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Experiences\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
   <ItemGroup>

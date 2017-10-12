@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,5 +12,6 @@ namespace WorldExplorer.Models
         public string Name { get; set; }
         public string Continent { get; set; }
         public string Country { get; set; }
+        public virtual ICollection<Experience> Experiences { get; set; }
     }
 }

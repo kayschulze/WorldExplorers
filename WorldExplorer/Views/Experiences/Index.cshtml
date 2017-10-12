@@ -1,20 +1,48 @@
 ﻿@model IEnumerable<WorldExplorer.Models.Experience>
 
-<html>
-<head>
-    <title>World Experiences</title>
-</head>
+@{
+    ViewData["Title"] = "Experience";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<body>
-    <h2>Experiences</h2>
-	<h4>@Html.DisplayNameFor(model =>model.Subject)</h4>
-    <ul>
-        @foreach(var listExperience in Model)
-		{
-            <li>@Html.DisplayFor(modelItem => listExperience.Subject)</li>
-			<li>@Html.DisplayFor(modelItem => listExperience.Description)</li>
-		}
-	</ul>
+<h2>World Explorers</h2>
+<hr />
 
-</body>
-</html>
+<table class="table">
+    <tr>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Subject)</h4>
+		</th>
+		<th>
+            <h4>@Html.DisplayNameFor(model => model.Description)</h4>
+		</th>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Location.Name)</h4>>
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var listExperience in Model)
+	{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelExperience => listExperience.Subject)
+		    </td>
+		    <td>
+                @Html.DisplayFor(modelExperience => listExperience.Description)
+		    </td>
+		    <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listExperience.LocationId }) |
+			    @Html.ActionLink("Details", "Details", new { id = listExperience.LocationId }) |
+			    @Html.ActionLink("Delete", "Delete", new { id = listExperience.LocationId })
+		    </td>
+		    <td>
+                @Html.DisplayFor(modelExperience => listExperience.Location.Name)
+		    </td>
+	    </tr>
+        
+	}
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create");
+</p>

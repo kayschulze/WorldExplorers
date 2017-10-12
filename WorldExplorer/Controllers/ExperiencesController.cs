@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using WorldExplorer.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,7 +14,8 @@ namespace WorldExplorer.Controllers
 
         public IActionResult Index()
         {
-            return View(db.Experiences.ToList());
+            //return View();
+            return View(db.Experiences.Include(experiences => experiences.Location).ToList());
         }
 
         public IActionResult Details(int id)
@@ -40,7 +40,7 @@ namespace WorldExplorer.Controllers
 
         public IActionResult Edit(int id)
         {
-            var thisExperience = db.ExperiencesFirstOrDefault(ExperiencesController => ExperiencesController.ExperienceId == id);
+            var thisExperience = db.Experiences.FirstOrDefault(experience => experience.ExperienceId == id);
             ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "Name");
             return View(thisExperience);
         }
@@ -48,7 +48,24 @@ namespace WorldExplorer.Controllers
         [HttpPost]
         public IActionResult Edit(Experience experience)
         {
-            db.
+            db.Entry(experience).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var thisExperience = db.Experiences.FirstOrDefault(experiences => experiences.ExperienceId == id);
+            return View(thisExperience);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisExperience = db.Experiences.FirstOrDefault(experiences => experiences.ExperienceId == id);
+            db.Experiences.Remove(thisExperience);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WorldExplorer.Models.Location>
+
+@{
+    ViewData["Title"] = "Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>World Explorers</h2>
+<hr />
+
+<table class="table">
+    <tr>
+		<th>
+            <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+		</th>
+
+		<th>
+            <h4>@Html.DisplayNameFor(model => model.Continent)</h4>
+		</th>
+		<th>
+            <h4>@Html.DisplayNameFor(model => model.Country)</h4>
+        </th>
+       
+		<th></th>
+	</tr>
+
+	@foreach (var listLocation in Model)
+	{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelLocation => listLocation.Name)
+		    </td>
+		    <td>
+                @Html.DisplayFor(modelLocation => listLocation.Continent)
+		    </td>
+		    <td>
+                @Html.DisplayFor(modelLocation => listLocation.Country)
+            </td>
+		    <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listLocation.LocationId }) |
+			    @Html.ActionLink("Details", "Details", new { id = listLocation.LocationId }) |
+			    @Html.ActionLink("Delete", "Delete", new { id = listLocation.LocationId })
+		    </td>
+	    </tr>
+        
+	}
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create");
+</p>

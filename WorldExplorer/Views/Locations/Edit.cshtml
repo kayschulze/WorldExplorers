@@ -1,0 +1,27 @@
+﻿@model WorldExplorer.Models.Location
+
+@{
+    ViewData["Title"] = "Location - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<hr />
+
+<h4>Edit this Location: @Html.DisplayFor(model => model.Name)</h4>>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.LocationId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Continent)
+    @Html.EditorFor(model => model.Continent)
+
+    @Html.LabelFor(model => model.Country)
+    @Html.EditorFor(model => model.Country)
+
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+
+@Html.ActionLink("Back to Locations List", "Index")

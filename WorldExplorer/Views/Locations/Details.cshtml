@@ -1,0 +1,16 @@
+﻿@model WorldExplorer.Models.Location
+
+<html>
+<head>
+    <title>World Experiences - Location Details</title>
+</head>
+
+<body>
+    <h2>Location Details</h2>
+	<hr />
+    @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Continent): @Html.DisplayFor(model => model.Continent)
+        @Html.DisplayNameFor(model => model.Country): @Html.DisplayFor(model => model.Country)
+	    <p>@Html.ActionLink("Back to Locations List", "Index")</p>>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+﻿@model WorldExplorer.Models.Location
+
+@{
+    ViewData["Title"] = "Location - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create a New Location</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Continent)
+    @Html.EditorFor(model => model.Continent)
+
+    @Html.LabelFor(model => model.Country)
+    @Html.EditorFor(model => model.Country)
+
+    <input type="submit" value="Create" class="btn btn-success" />
+}
+
+@Html.ActionLink("Back to Locations List", "Index")

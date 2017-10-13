@@ -16,9 +16,9 @@
 		<th>
             <h4>@Html.DisplayNameFor(model => model.Description)</h4>
 		</th>
-        <th>
+        <!--th>
             <h4>@Html.DisplayNameFor(model => model.Location.Name)</h4>>
-		</th>
+		</th>-->
 		<th></th>
 	</tr>
 
@@ -32,13 +32,13 @@
                 @Html.DisplayFor(modelExperience => listExperience.Description)
 		    </td>
 		    <td>
-                @Html.ActionLink("Edit", "Edit", new { id = listExperience.LocationId }) |
-			    @Html.ActionLink("Details", "Details", new { id = listExperience.LocationId }) |
-			    @Html.ActionLink("Delete", "Delete", new { id = listExperience.LocationId })
+                @Html.ActionLink("Edit", "Edit", new { id = listExperience.ExperienceId }) |
+			    @Html.ActionLink("Details", "Details", new { id = listExperience.ExperienceId }) |
+			    @Html.ActionLink("Delete", "Delete", new { id = listExperience.ExperienceId })
 		    </td>
-		    <td>
+		    <!--<td>
                 @Html.DisplayFor(modelExperience => listExperience.Location.Name)
-		    </td>
+		    </td>-->
 	    </tr>
         
 	}
